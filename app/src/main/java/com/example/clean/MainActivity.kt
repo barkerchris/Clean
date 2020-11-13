@@ -6,12 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
-import androidx.navigation.fragment.NavHostFragment
-import androidx.viewpager2.widget.ViewPager2
-import com.example.clean.adapters.TabAdapter
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,20 +16,6 @@ class MainActivity : AppCompatActivity() {
 
         val mToolbar = findViewById<Toolbar>(R.id.main_toolbar)
         setSupportActionBar(mToolbar)
-
-        val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
-        val tabTitles = resources.getStringArray(R.array.tab_titles)
-        val viewPager = findViewById<ViewPager2>(R.id.view_pager)
-
-        viewPager.adapter = TabAdapter(this, tabTitles)
-        TabLayoutMediator(tabLayout, viewPager,
-            TabLayoutMediator.TabConfigurationStrategy { tab, position ->
-                when (position) {
-                    0 -> tab.text = tabTitles[0]
-                    1 -> tab.text = tabTitles[1]
-                    2 -> tab.text = tabTitles[2]
-                }
-            }).attach()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

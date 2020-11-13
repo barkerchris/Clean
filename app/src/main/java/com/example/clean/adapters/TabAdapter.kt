@@ -1,11 +1,13 @@
 package com.example.clean.adapters
 
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.clean.ListFragment
 
-class TabAdapter (activity: AppCompatActivity, private val tabs: Array<String>) :FragmentStateAdapter(activity) {
+class TabAdapter (manager: FragmentManager, lifecycle: Lifecycle, private val tabs: Array<String>):
+    FragmentStateAdapter(manager, lifecycle) {
     override fun createFragment(position: Int): Fragment {
         when (position) {
             0 -> return ListFragment()
