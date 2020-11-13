@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+
+    <dimen name="height_list_small">106dp</dimen>
+    <dimen name="height_list_big">196dp</dimen>
+</resources>

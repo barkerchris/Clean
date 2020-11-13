@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Clean</string>
+    <string name="app_search">Search</string>
+    <string name="app_profile">Profile</string>
+    <string name="app_settings">Settings</string>
+
+    <string-array name="tab_titles">
+        <item>My News</item>
+        <item>Top Stories</item>
+        <item>UK</item>
+    </string-array>
+</resources>
