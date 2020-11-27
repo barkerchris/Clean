@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_list_big"
     android:orientation="vertical"
-    android:paddingTop="@dimen/padding_small">
+    android:paddingBottom="@dimen/padding_small">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/img_preview_big"
@@ -18,14 +18,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/swansea_stock_photo" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txt_category_big"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
-        android:text="TextView"
         android:textAppearance="@style/Overline"
         app:layout_constraintBottom_toTopOf="@+id/txt_title_big"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
         android:id="@+id/txt_time_big"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginEnd="8dp"
         android:textAppearance="@style/Overline"
         app:layout_constraintBottom_toBottomOf="@+id/txt_category_big"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +46,10 @@
         android:id="@+id/txt_title_big"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:textAppearance="@style/Headline5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +60,6 @@
         android:id="@+id/txt_source_big"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TextView"
         android:textAppearance="@style/Subtitle1"
         android:textColor="@color/textOverlay"
         app:layout_constraintBottom_toBottomOf="@+id/img_preview_big"

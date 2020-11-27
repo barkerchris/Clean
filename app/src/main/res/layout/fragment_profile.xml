@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/padding_small"
+    android:paddingVertical="@dimen/padding_small">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_get"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/get"
+        android:textAppearance="@style/Button"
+        android:textColor="@color/textOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_save" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_signout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/sign_out"
+        android:textAppearance="@style/Button"
+        android:textColor="@color/textOverlay"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/txt_profile"
+        app:layout_constraintTop_toBottomOf="@+id/txt_profile" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/save"
+        android:textAppearance="@style/Button"
+        android:textColor="@color/textOverlay"
+        app:layout_constraintStart_toStartOf="@+id/chk_health"
+        app:layout_constraintTop_toBottomOf="@+id/chk_health" />
+
+    <CheckBox
+        android:id="@+id/chk_health"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/health"
+        android:textAppearance="@style/Body1"
+        app:layout_constraintStart_toStartOf="@+id/chk_entertainment"
+        app:layout_constraintTop_toBottomOf="@+id/chk_entertainment" />
+
+    <CheckBox
+        android:id="@+id/chk_entertainment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/entertainment"
+        android:textAppearance="@style/Body1"
+        app:layout_constraintStart_toStartOf="@+id/chk_business"
+        app:layout_constraintTop_toBottomOf="@+id/chk_business" />
+
+    <CheckBox
+        android:id="@+id/chk_business"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/business"
+        android:textAppearance="@style/Body1"
+        app:layout_constraintStart_toStartOf="@+id/chk_sports"
+        app:layout_constraintTop_toBottomOf="@+id/chk_sports" />
+
+    <CheckBox
+        android:id="@+id/chk_science"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/science"
+        android:textAppearance="@style/Body1"
+        app:layout_constraintStart_toStartOf="@+id/chk_technology"
+        app:layout_constraintTop_toBottomOf="@+id/chk_technology" />
+
+    <CheckBox
+        android:id="@+id/chk_sports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sports"
+        android:textAppearance="@style/Body1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chk_science" />
+
+    <CheckBox
+        android:id="@+id/chk_technology"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/technology"
+        android:textAppearance="@style/Body1"
+        app:layout_constraintStart_toStartOf="@+id/chk_general"
+        app:layout_constraintTop_toBottomOf="@+id/chk_general" />
+
+    <CheckBox
+        android:id="@+id/chk_general"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/general"
+        android:textAppearance="@style/Body1"
+        app:layout_constraintStart_toStartOf="@+id/txt_category"
+        app:layout_constraintTop_toBottomOf="@+id/txt_category" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/category"
+        android:textAppearance="@style/Subtitle1"
+        app:layout_constraintStart_toStartOf="@+id/lst_countries"
+        app:layout_constraintTop_toBottomOf="@+id/lst_countries" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_preferences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/height_list_small"
+        android:text="@string/preferences"
+        android:textAppearance="@style/Headline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_profile" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="@color/colorSurface"
+        android:text="@string/register"
+        android:textAppearance="@style/Button"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintStart_toEndOf="@+id/btn_signin"
+        app:layout_constraintTop_toTopOf="@+id/btn_signin" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_profile"
+        android:textAppearance="@style/Headline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_signin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/sign_in"
+        android:textAppearance="@style/Button"
+        android:textColor="@color/textOverlay"
+        app:layout_constraintStart_toStartOf="@+id/txt_profile"
+        app:layout_constraintTop_toBottomOf="@+id/txt_profile" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/country"
+        android:textAppearance="@style/Subtitle1"
+        app:layout_constraintStart_toStartOf="@+id/txt_preferences"
+        app:layout_constraintTop_toBottomOf="@+id/txt_preferences" />
+
+    <Spinner
+        android:id="@+id/lst_countries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/txt_country"
+        app:layout_constraintTop_toBottomOf="@+id/txt_country" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

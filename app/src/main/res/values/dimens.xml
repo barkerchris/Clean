@@ -5,5 +5,5 @@
     <dimen name="padding_medium">16dp</dimen>
 
     <dimen name="height_list_small">106dp</dimen>
-    <dimen name="height_list_big">196dp</dimen>
+    <dimen name="height_list_big">318dp</dimen>
 </resources>

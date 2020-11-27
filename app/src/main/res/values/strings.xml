@@ -8,5 +8,66 @@
         <item>My News</item>
         <item>Top Stories</item>
         <item>UK</item>
+        <item>Technology</item>
+        <item>Science</item>
+        <item>Health</item>
+        <item>Sports</item>
+        <item>Entertainment</item>
+        <item>Business</item>
     </string-array>
+
+    <string name="sign_register">Sign In/Register</string>
+    <string name="sign_in">Sign In</string>
+    <string name="register">Register</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="email">Email</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="theme">Theme</string>
+    <string name="theme_instructions">Switch Theme</string>
+    <string name="info">More Info</string>
+    <string name="about">About</string>
+
+    <string name="err_empty">Cannot have empty fields</string>
+    <string name="err_signin">Cannot sign in</string>
+    <string name="err_register">Cannot register these details</string>
+    <string name="msg_signedin">Signed in</string>
+    <string name="msg_registered">Registered</string>
+    <string name="msg_signout">Signed out</string>
+
+    <string name="preferences">Preferences</string>
+    <string name="pref_instructions">Preferences</string>
+    <string name="category">Category:</string>
+    <string name="country">Country:</string>
+    <string name="save">Save</string>
+    <string name="get">Get</string>
+    <string name="general">GENERAL</string>
+    <string name="technology">TECHNOLOGY</string>
+    <string name="science">SCIENCE</string>
+    <string name="sports">SPORTS</string>
+    <string name="business">BUSINESS</string>
+    <string name="entertainment">ENTERTAINMENT</string>
+    <string name="health">HEALTH</string>
+    
+    <string-array name="countries">
+        <item>AR</item>, <item>AU</item>, <item>AT</item>,
+        <item>BE</item>, <item>BR</item>, <item>BG</item>,
+        <item>CA</item>, <item>CN</item>, <item>CO</item>,
+        <item>CU</item>, <item>CZ</item>, <item>EG</item>,
+        <item>FR</item>, <item>DE</item>, <item>GR</item>,
+        <item>HK</item>, <item>HU</item>, <item>IN</item>,
+        <item>ID</item>, <item>IE</item>, <item>IL</item>,
+        <item>IT</item>, <item>JP</item>, <item>LV</item>,
+        <item>LT</item>, <item>MY</item>, <item>MX</item>,
+        <item>MA</item>, <item>NL</item>, <item>NZ</item>,
+        <item>NG</item>, <item>NO</item>, <item>PH</item>,
+        <item>PL</item>, <item>PT</item>, <item>RO</item>,
+        <item>RU</item>, <item>SA</item>, <item>RS</item>,
+        <item>SG</item>, <item>SK</item>, <item>SI</item>,
+        <item>ZA</item>, <item>KR</item>, <item>SE</item>,
+        <item>CH</item>, <item>TW</item>, <item>TH</item>,
+        <item>TR</item>, <item>AE</item>, <item>UA</item>,
+        <item>GB</item>, <item>US</item>, <item>VE</item>,
+    </string-array>
+
 </resources>

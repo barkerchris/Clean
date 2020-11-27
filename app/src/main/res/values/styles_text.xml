@@ -37,7 +37,7 @@
 
     <style name="Headline6" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="fontFamily">@font/libre_baskerville</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
 <!--        <item name="android:letterSpacing">0.15</item>-->
         <item name="android:textColor">@color/textPrimary</item>
     </style>

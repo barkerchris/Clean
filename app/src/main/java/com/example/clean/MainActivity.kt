@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import androidx.appcompat.widget.Toolbar
-import com.google.android.material.snackbar.Snackbar
+import androidx.navigation.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
+import com.google.android.material.appbar.MaterialToolbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,8 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val mToolbar = findViewById<Toolbar>(R.id.main_toolbar)
-        setSupportActionBar(mToolbar)
+        setSupportActionBar(findViewById<MaterialToolbar>(R.id.main_toolbar))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -24,17 +23,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val myView = findViewById<View>(R.id.main_toolbar)
-        when (item!!.itemId) {
-            R.id.app_bar_profile -> {
-                val snackbar = Snackbar.make(myView, getString(R.string.app_profile), Snackbar.LENGTH_LONG)
-                snackbar.show()
-                return true
+        when (item.itemId) {
+            R.id.profileFragment -> {
+                return item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
             }
-            R.id.app_bar_settings -> {
-                val snackbar = Snackbar.make(myView, getString(R.string.app_settings), Snackbar.LENGTH_LONG)
-                snackbar.show()
-                return true
+            R.id.settingsFragment -> {
+                return item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
             }
         }
         return super.onOptionsItemSelected(item)

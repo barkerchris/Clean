@@ -3,19 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/app_bar_search"
+        android:id="@+id/action_search"
         android:icon="@drawable/ic_action_search"
         android:title="@string/app_search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/app_bar_profile"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/ic_action_profile"
         android:title="@string/app_profile"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/app_bar_settings"
+        android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_action_settings"
         android:title="@string/app_settings"
         app:showAsAction="ifRoom" />
