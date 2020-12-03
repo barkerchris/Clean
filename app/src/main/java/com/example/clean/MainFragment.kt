@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
 import com.example.clean.adapters.TabAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
 
@@ -23,7 +23,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tabTitles = resources.getStringArray(R.array.tab_titles)
-        val viewPager = view.findViewById<ViewPager2>(R.id.view_pager)
+        val viewPager = view_pager
         val adapter = TabAdapter(requireActivity().supportFragmentManager, lifecycle, tabTitles)
         viewPager.adapter = adapter
 

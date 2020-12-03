@@ -6,7 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
-import com.google.android.material.appbar.MaterialToolbar
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setSupportActionBar(findViewById<MaterialToolbar>(R.id.main_toolbar))
+        setSupportActionBar(main_toolbar)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

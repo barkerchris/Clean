@@ -16,7 +16,6 @@ import com.dfl.newsapi.model.ArticleDto
 import com.example.clean.adapters.RecyclerAdapter
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_list.*
-import kotlinx.android.synthetic.main.fragment_list.view.*
 
 class ListFragment : Fragment() {
     private val newsApiRepository = NewsApiRepository("5d5a36ccc90f4f7baaa94cdca8da3abc")
@@ -32,27 +31,28 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //Due to the slow API we need to wait for the UI to update and make sure all articles
-        //are pulled before being bound to the adapter
-        getArticles(view)
-        Thread.sleep(2000)
 
-        view.recycler_view.apply {
+        val recycler = recycler_view
+
+//        getArticles()
+//        Thread.sleep(2000)
+
+        recycler.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = RecyclerAdapter(context, articleList, resources.getStringArray(R.array.tab_titles))
         }
 
-        view.swipe_refresh.setOnRefreshListener {
-            articleList.clear()
-            getArticles(view)
-            Thread.sleep(1500)
-            recycler_view.adapter!!.notifyDataSetChanged()
+        swipe_refresh.setOnRefreshListener {
+            getArticles()
+            Thread.sleep(2000)
+            recycler.adapter!!.notifyDataSetChanged()
             swipe_refresh.isRefreshing = false
         }
     }
 
     @SuppressLint("CheckResult")
-    fun getArticles(view: View) {
+    fun getArticles() {
+        articleList.clear()
         //Get current tab
         val tabSharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("currentTab", 0)
         val tabIndex = tabSharedPreferences.getInt("tabIndex", 0)
@@ -61,28 +61,30 @@ class ListFragment : Fragment() {
         var country: Country? = null
         val pageSize = 4
         val page = 1
+        //My news
         if(tabIndex == 0) {
             //Get user preferences
-            val sharedPrefs: SharedPreferences = requireActivity().getSharedPreferences("accountPreferences", 0)
+            val sharedPrefs: SharedPreferences = requireActivity().getSharedPreferences("articlePreferences", 0)
             var userCountry = sharedPrefs.getString("country", "")
-            val userCategories = sharedPrefs.getStringSet("categories", mutableSetOf())
+            var userCategories = sharedPrefs.getStringSet("categories", mutableSetOf())
             //If the user has no set preferences then set default values
             if(userCountry.isNullOrEmpty()) {
                 userCountry = resources.getStringArray(R.array.countries)[50]
             }
-            if(userCategories!!.isEmpty()) {
-                userCategories.add(resources.getString(R.string.general))
+            if(userCategories.isNullOrEmpty()) {
+                userCategories = mutableSetOf(resources.getString(R.string.general))
             }
             for(cat in userCategories) {
-            newsApiRepository.getTopHeadlines(category = Category.valueOf(cat.toString()), country = Country.valueOf(userCountry.toString()), pageSize = 2, page = page
-            )
-                .subscribeOn(Schedulers.io())
-                .toFlowable()
-                .flatMapIterable { articles -> articles.articles }
-                .subscribe({ article -> articleList.add(article) },
-                    { t -> Log.d("getTopHeadlines error", t.message!!) })
+                    newsApiRepository.getTopHeadlines(category = Category.valueOf(cat.toString()),
+                        country = Country.valueOf(userCountry.toString()), pageSize = page, page = page)
+                        .subscribeOn(Schedulers.io())
+                        .toFlowable()
+                        .flatMapIterable { articles -> articles.articles }
+                        .subscribe({ article -> articleList.add(article) },
+                            { t -> Log.d("getTopHeadlines error", t.message!!) })
             }
             return
+
         } else if(tabIndex == 1) {
             category = Category.valueOf(resources.getString(R.string.general))
             country = null
@@ -109,8 +111,7 @@ class ListFragment : Fragment() {
             country = null
         }
 
-        newsApiRepository.getTopHeadlines(category = category, country = country, pageSize = pageSize, page = page
-        )
+        newsApiRepository.getTopHeadlines(category = category, country = country, pageSize = pageSize, page = page)
             .subscribeOn(Schedulers.io())
             .toFlowable()
             .flatMapIterable { articles -> articles.articles }

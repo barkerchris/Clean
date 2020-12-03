@@ -36,8 +36,8 @@
     <string name="msg_signout">Signed out</string>
 
     <string name="preferences">Preferences</string>
-    <string name="pref_instructions">Preferences</string>
-    <string name="category">Category:</string>
+    <string name="preferences_title">Article and notification preferences</string>
+
     <string name="country">Country:</string>
     <string name="save">Save</string>
     <string name="get">Get</string>
@@ -48,7 +48,11 @@
     <string name="business">BUSINESS</string>
     <string name="entertainment">ENTERTAINMENT</string>
     <string name="health">HEALTH</string>
-    
+
+    <string name="categories">Categories:</string>
+    <string name="articles">Articles:</string>
+    <string name="notifications">Notifications:</string>
+
     <string-array name="countries">
         <item>AR</item>, <item>AU</item>, <item>AT</item>,
         <item>BE</item>, <item>BR</item>, <item>BG</item>,

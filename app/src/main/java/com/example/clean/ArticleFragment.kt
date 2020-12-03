@@ -13,7 +13,6 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-
 class ArticleFragment : Fragment() {
     private val args by navArgs<ArticleFragmentArgs>()
 
@@ -22,6 +21,11 @@ class ArticleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view =  inflater.inflate(R.layout.fragment_article, container, false)
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val articleArgs = args.ArticleData
         //Formatting the date/time
@@ -38,12 +42,10 @@ class ArticleFragment : Fragment() {
         view.img_share.setOnClickListener{
             val sendIntent = Intent()
             sendIntent.action = Intent.ACTION_SEND
-            sendIntent.putExtra(Intent.EXTRA_TEXT, view.txt_title_open.text)
+            sendIntent.putExtra(Intent.EXTRA_TEXT, articleArgs[5])
             sendIntent.type = "text/plain"
             startActivity(sendIntent)
         }
-
-        return view
     }
 
 }

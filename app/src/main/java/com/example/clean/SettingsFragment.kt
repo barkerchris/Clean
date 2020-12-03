@@ -13,9 +13,6 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view =  inflater.inflate(R.layout.fragment_settings, container, false)
-
-        activity?.actionBar?.hide()
-
         return view
     }
 
