@@ -27,6 +27,7 @@
     <string name="theme_instructions">Switch Theme</string>
     <string name="info">More Info</string>
     <string name="about">About</string>
+    <string name="saved_articles">Saved articles</string>
 
     <string name="err_empty">Cannot have empty fields</string>
     <string name="err_signin">Cannot sign in</string>
@@ -52,6 +53,14 @@
     <string name="categories">Categories:</string>
     <string name="articles">Articles:</string>
     <string name="notifications">Notifications:</string>
+    <string name="system_notifications">System notification settings</string>
+    <string name="blacklist">Blacklist:</string>
+    <string name="blacklist_instructions">Type in a keyword to block:</string>
+    <string name="keyword">Keyword</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_delete">Delete</string>
+    <string name="notification_title">Articles available</string>
+    <string name="notification_body">Tap to open.</string>
 
     <string-array name="countries">
         <item>AR</item>, <item>AU</item>, <item>AT</item>,

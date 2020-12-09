@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.clean.data.Article
@@ -15,8 +16,8 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-//Fragment for the opened article
-class ArticleFragment : Fragment() {
+//Opens the saved article up
+class SavedArticleFragment : Fragment() {
     private val args by navArgs<ArticleFragmentArgs>()
     private val db = FirebaseDatabase.getInstance()
     private lateinit var dbReference: DatabaseReference
@@ -31,7 +32,7 @@ class ArticleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //Getting the args passed from navigation
+        img_save.setColorFilter(resources.getColor(R.color.colorAccent, requireActivity().theme))
         val article = Article(
             args.ArticleData[0],
             args.ArticleData[1],
@@ -52,7 +53,6 @@ class ArticleFragment : Fragment() {
         txt_body_open.text = article.description
         txt_title_open.text = article.title
 
-        //This copies the article's URL to the clipboard so the article can be shared
         img_share.setOnClickListener{
             val sendIntent = Intent()
             sendIntent.action = Intent.ACTION_SEND
@@ -61,12 +61,11 @@ class ArticleFragment : Fragment() {
             startActivity(sendIntent)
         }
 
-        //This adds the article to Firebase as the user has saved it
+        //Removes the article from the saved list
         img_save.setOnClickListener{
             dbReference = db.reference
-            dbReference.child(article.title.replace(Regex("[.#$\\[\\]]"), "")).setValue(article)
-            img_save.setColorFilter(resources.getColor(R.color.colorAccent, requireActivity().theme))
-
+            dbReference.child(article.title.replace(Regex("[.#$\\[\\]]"), "")).removeValue()
+            img_save.isVisible = false
         }
     }
 

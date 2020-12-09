@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_profile.*
 
+//Used to navigate to various profile-specific places
 class ProfileFragment : Fragment() {
     var mAuth = FirebaseAuth.getInstance()
 
@@ -49,12 +50,16 @@ class ProfileFragment : Fragment() {
         btn_preferences.setOnClickListener {
             view.findNavController().navigate(R.id.action_profileFragment_to_preferencesFragment)
         }
+        btn_saved_articles.setOnClickListener {
+            view.findNavController().navigate(R.id.action_profileFragment_to_savedListFragment)
+        }
     }
 
     private fun signedIn() {
         btn_signin.isVisible = false
         btn_register.isVisible = false
         btn_signout.isVisible = true
+        btn_saved_articles.isVisible = true
         btn_preferences.isVisible = true
     }
 
@@ -62,6 +67,7 @@ class ProfileFragment : Fragment() {
         btn_signin.isVisible = true
         btn_register.isVisible = true
         btn_signout.isVisible = false
+        btn_saved_articles.isVisible = false
         btn_preferences.isVisible = false
     }
 

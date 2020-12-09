@@ -1,207 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="@dimen/padding_medium"
-    android:paddingVertical="@dimen/padding_medium">
+    android:fillViewport="true">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txt_notifications"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/notifications"
-        android:textAppearance="@style/Subtitle1"
-        app:layout_constraintStart_toStartOf="@+id/chk_general2"
-        app:layout_constraintTop_toTopOf="@+id/txt_articles" />
-
-    <CheckBox
-        android:id="@+id/chk_technology2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/technology"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/chk_science2"
-        app:layout_constraintTop_toBottomOf="@+id/chk_general2" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_save_notifications"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/colorAccent"
-        android:text="@string/save"
-        android:textAppearance="@style/Button"
-        android:textColor="@color/textOverlay"
-        app:layout_constraintStart_toStartOf="@+id/chk_health2"
-        app:layout_constraintTop_toBottomOf="@+id/chk_health2" />
-
-    <CheckBox
-        android:id="@+id/chk_sports2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sports"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/chk_business2"
-        app:layout_constraintTop_toBottomOf="@+id/chk_science2" />
-
-    <CheckBox
-        android:id="@+id/chk_health2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/health"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/chk_entertainment2"
-        app:layout_constraintTop_toBottomOf="@+id/chk_entertainment2" />
-
-    <CheckBox
-        android:id="@+id/chk_science2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/science"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/chk_sports2"
-        app:layout_constraintTop_toBottomOf="@+id/chk_technology2" />
-
-    <CheckBox
-        android:id="@+id/chk_entertainment2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/entertainment"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chk_business2" />
-
-    <CheckBox
-        android:id="@+id/chk_business2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/business"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/chk_entertainment2"
-        app:layout_constraintTop_toBottomOf="@+id/chk_sports2" />
-
-    <CheckBox
-        android:id="@+id/chk_general2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/general"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/chk_technology2"
-        app:layout_constraintTop_toBottomOf="@+id/txt_notifications" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txt_preferences"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/preferences_title"
-        android:textAppearance="@style/Headline5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txt_country"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/country"
-        android:textAppearance="@style/Subtitle1"
-        app:layout_constraintStart_toStartOf="@+id/txt_preferences"
-        app:layout_constraintTop_toBottomOf="@+id/txt_preferences" />
-
-    <Spinner
-        android:id="@+id/lst_countries"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/txt_country"
-        app:layout_constraintTop_toBottomOf="@+id/txt_country" />
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/padding_medium"
+        android:paddingVertical="@dimen/padding_medium">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txt_articles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/articles"
-        android:textAppearance="@style/Subtitle1"
-        app:layout_constraintStart_toStartOf="@+id/lst_countries"
-        app:layout_constraintTop_toBottomOf="@+id/lst_countries" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_delete_blacklist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorError"
+            android:text="@string/btn_delete"
+            android:textAppearance="@style/Button"
+            android:textColor="@color/textOverlay"
+            app:layout_constraintEnd_toEndOf="@+id/edt_blacklist"
+            app:layout_constraintTop_toTopOf="@+id/btn_save_blacklist" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_save_articles"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/colorAccent"
-        android:text="@string/save"
-        android:textAppearance="@style/Button"
-        android:textColor="@color/textOverlay"
-        app:layout_constraintStart_toStartOf="@+id/chk_health"
-        app:layout_constraintTop_toBottomOf="@+id/chk_health" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_blacklist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/txt_blacklist_sub"
+            app:layout_constraintTop_toBottomOf="@+id/txt_blacklist_sub" />
 
-    <CheckBox
-        android:id="@+id/chk_health"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/health"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/chk_entertainment"
-        app:layout_constraintTop_toBottomOf="@+id/chk_entertainment" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_blacklist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/btn_add"
+            android:textAppearance="@style/Button"
+            android:textColor="@color/textOverlay"
+            app:layout_constraintStart_toStartOf="@+id/edt_blacklist"
+            app:layout_constraintTop_toBottomOf="@+id/edt_blacklist" />
 
-    <CheckBox
-        android:id="@+id/chk_entertainment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/entertainment"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/chk_business"
-        app:layout_constraintTop_toBottomOf="@+id/chk_business" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_blacklist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/keyword"
+            app:layout_constraintStart_toStartOf="@+id/txt_blacklist_instructions"
+            app:layout_constraintTop_toBottomOf="@+id/txt_blacklist_instructions">
 
-    <CheckBox
-        android:id="@+id/chk_business"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/business"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/chk_sports"
-        app:layout_constraintTop_toBottomOf="@+id/chk_sports" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <CheckBox
-        android:id="@+id/chk_science"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/science"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/chk_technology"
-        app:layout_constraintTop_toBottomOf="@+id/chk_technology" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_blacklist_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/blacklist_instructions"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/txt_blacklist"
+            app:layout_constraintTop_toBottomOf="@+id/txt_blacklist" />
 
-    <CheckBox
-        android:id="@+id/chk_sports"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sports"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/chk_science"
-        app:layout_constraintTop_toBottomOf="@+id/chk_science" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_blacklist_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/blacklist"
+            android:textAppearance="@style/Subtitle1"
+            app:layout_constraintStart_toStartOf="@+id/btn_open_notifications"
+            app:layout_constraintTop_toBottomOf="@+id/btn_open_notifications" />
 
-    <CheckBox
-        android:id="@+id/chk_technology"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/technology"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/chk_general"
-        app:layout_constraintTop_toBottomOf="@+id/chk_general" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_open_notifications"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/system_notifications"
+            android:textAppearance="@style/Button"
+            android:textColor="@color/textOverlay"
+            app:layout_constraintEnd_toEndOf="@+id/btn_save_notifications"
+            app:layout_constraintStart_toStartOf="@+id/btn_save_articles"
+            app:layout_constraintTop_toBottomOf="@+id/btn_save_articles" />
 
-    <CheckBox
-        android:id="@+id/chk_general"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/general"
-        android:textAppearance="@style/Body1"
-        app:layout_constraintStart_toStartOf="@+id/txt_articles"
-        app:layout_constraintTop_toBottomOf="@+id/txt_articles" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_notifications_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notifications"
+            android:textAppearance="@style/Subtitle1"
+            app:layout_constraintStart_toStartOf="@+id/chk_general2"
+            app:layout_constraintTop_toTopOf="@+id/txt_articles_sub" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <CheckBox
+            android:id="@+id/chk_technology2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/technology"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/chk_science2"
+            app:layout_constraintTop_toBottomOf="@+id/chk_general2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_notifications"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/save"
+            android:textAppearance="@style/Button"
+            android:textColor="@color/textOverlay"
+            app:layout_constraintEnd_toEndOf="@+id/chk_entertainment2"
+            app:layout_constraintStart_toStartOf="@+id/chk_health2"
+            app:layout_constraintTop_toBottomOf="@+id/chk_health2" />
+
+        <CheckBox
+            android:id="@+id/chk_sports2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sports"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/chk_business2"
+            app:layout_constraintTop_toBottomOf="@+id/chk_science2" />
+
+        <CheckBox
+            android:id="@+id/chk_health2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/health"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/chk_entertainment2"
+            app:layout_constraintTop_toBottomOf="@+id/chk_entertainment2" />
+
+        <CheckBox
+            android:id="@+id/chk_science2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/science"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/chk_sports2"
+            app:layout_constraintTop_toBottomOf="@+id/chk_technology2" />
+
+        <CheckBox
+            android:id="@+id/chk_entertainment2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/entertainment"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chk_business2" />
+
+        <CheckBox
+            android:id="@+id/chk_business2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/business"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/chk_entertainment2"
+            app:layout_constraintTop_toBottomOf="@+id/chk_sports2" />
+
+        <CheckBox
+            android:id="@+id/chk_general2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/general"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/chk_technology2"
+            app:layout_constraintTop_toBottomOf="@+id/txt_notifications_sub" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_preferences_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/preferences_title"
+            android:textAppearance="@style/Headline5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_country_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/country"
+            android:textAppearance="@style/Subtitle1"
+            app:layout_constraintStart_toStartOf="@+id/txt_preferences_title"
+            app:layout_constraintTop_toBottomOf="@+id/txt_preferences_title" />
+
+        <Spinner
+            android:id="@+id/lst_countries"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/txt_country_sub"
+            app:layout_constraintTop_toBottomOf="@+id/txt_country_sub" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_articles_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/articles"
+            android:textAppearance="@style/Subtitle1"
+            app:layout_constraintStart_toStartOf="@+id/lst_countries"
+            app:layout_constraintTop_toBottomOf="@+id/lst_countries" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_articles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/save"
+            android:textAppearance="@style/Button"
+            android:textColor="@color/textOverlay"
+            app:layout_constraintEnd_toEndOf="@+id/chk_entertainment"
+            app:layout_constraintStart_toStartOf="@+id/chk_health"
+            app:layout_constraintTop_toBottomOf="@+id/chk_health" />
+
+        <CheckBox
+            android:id="@+id/chk_health"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/health"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/chk_entertainment"
+            app:layout_constraintTop_toBottomOf="@+id/chk_entertainment" />
+
+        <CheckBox
+            android:id="@+id/chk_entertainment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/entertainment"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/chk_business"
+            app:layout_constraintTop_toBottomOf="@+id/chk_business" />
+
+        <CheckBox
+            android:id="@+id/chk_business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/business"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/chk_sports"
+            app:layout_constraintTop_toBottomOf="@+id/chk_sports" />
+
+        <CheckBox
+            android:id="@+id/chk_science"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/science"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/chk_technology"
+            app:layout_constraintTop_toBottomOf="@+id/chk_technology" />
+
+        <CheckBox
+            android:id="@+id/chk_sports"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sports"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/chk_science"
+            app:layout_constraintTop_toBottomOf="@+id/chk_science" />
+
+        <CheckBox
+            android:id="@+id/chk_technology"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/technology"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/chk_general"
+            app:layout_constraintTop_toBottomOf="@+id/chk_general" />
+
+        <CheckBox
+            android:id="@+id/chk_general"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/general"
+            android:textAppearance="@style/Body1"
+            app:layout_constraintStart_toStartOf="@+id/txt_articles_sub"
+            app:layout_constraintTop_toBottomOf="@+id/txt_articles_sub" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

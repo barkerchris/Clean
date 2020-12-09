@@ -18,7 +18,8 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-class RecyclerAdapter (private val context: Context, private val articleList: MutableList<ArticleDto>, private val tabTitles: Array<String>): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+//Adapter for the recycler view holding all articles
+class ListRecyclerAdapter (private val context: Context, private val articleList: MutableList<ArticleDto>, private val tabTitles: Array<String>): RecyclerView.Adapter<ListRecyclerAdapter.ViewHolder>() {
     //viewType 0 = Big, 1 = Small
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         if(viewType == 0) {
@@ -48,7 +49,7 @@ class RecyclerAdapter (private val context: Context, private val articleList: Mu
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun bind(article: ArticleDto, viewType: Int) {
             //Setting up navigation
-            val arguments = arrayOf(article.urlToImage, article.author, article.publishedAt,
+            val arguments = arrayOf(article.urlToImage, article.author, article.source.name, article.publishedAt,
             article.description, article.title, article.url)
             val action: NavDirections = MainFragmentDirections.actionMainFragmentToArticleFragment(arguments)
             //Getting current tab

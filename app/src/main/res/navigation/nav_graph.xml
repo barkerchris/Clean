@@ -44,6 +44,10 @@
             android:id="@+id/action_profileFragment_to_preferencesFragment"
             app:destination="@id/preferencesFragment"
             app:enterAnim="@anim/fragment_open_enter" />
+        <action
+            android:id="@+id/action_profileFragment_to_savedListFragment"
+            app:destination="@id/savedListFragment"
+            app:enterAnim="@anim/fragment_open_enter" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -79,4 +83,20 @@
         android:id="@+id/preferencesFragment"
         android:name="com.example.clean.PreferencesFragment"
         android:label="PreferencesFragment" />
+    <fragment
+        android:id="@+id/savedListFragment"
+        android:name="com.example.clean.SavedListFragment"
+        android:label="SavedListFragment" >
+        <action
+            android:id="@+id/action_savedListFragment_to_savedArticleFragment"
+            app:destination="@id/savedArticleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/savedArticleFragment"
+        android:name="com.example.clean.SavedArticleFragment"
+        android:label="SavedArticleFragment" >
+        <argument
+            android:name="ArticleData"
+            app:argType="string[]" />
+    </fragment>
 </navigation>

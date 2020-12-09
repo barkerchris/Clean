@@ -11,6 +11,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_main.*
 
+//Main fragment hosts the viewpager alongside the tab layout
 class MainFragment : Fragment() {
 
     override fun onCreateView(
@@ -23,25 +24,23 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tabTitles = resources.getStringArray(R.array.tab_titles)
-        val viewPager = view_pager
-        val adapter = TabAdapter(requireActivity().supportFragmentManager, lifecycle, tabTitles)
-        viewPager.adapter = adapter
+        val adapter = TabAdapter(parentFragmentManager, lifecycle, tabTitles)
+        view_pager.adapter = adapter
 
-        val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
-        tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
+        tab_layout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
                 val sharedPrefs: SharedPreferences = requireActivity().getSharedPreferences("currentTab", 0)
                 val sharedPrefsEdit: SharedPreferences.Editor = sharedPrefs.edit()
-                sharedPrefsEdit.putInt("tabIndex", tabLayout.selectedTabPosition)
+                sharedPrefsEdit.putInt("tabIndex", tab_layout.selectedTabPosition)
                 sharedPrefsEdit.apply()
             }
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            override fun onTabUnselected(tab: TabLayout.Tab) {
             }
-            override fun onTabReselected(tab: TabLayout.Tab?) {
+            override fun onTabReselected(tab: TabLayout.Tab) {
             }
         })
 
-        TabLayoutMediator(tabLayout, viewPager,
+        TabLayoutMediator(tab_layout, view_pager,
             TabLayoutMediator.TabConfigurationStrategy { tab, position ->
                 when (position) {
                     0 -> tab.text = tabTitles[0]

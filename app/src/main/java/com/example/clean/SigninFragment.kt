@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_signin.*
 
+//Signs the user in to their firebase account
 class SigninFragment : Fragment() {
     private var mAuth = FirebaseAuth.getInstance()
 

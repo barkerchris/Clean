@@ -6,6 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.clean.ListFragment
 
+//Adapter for the tabs on the viewpager
 class TabAdapter (manager: FragmentManager, lifecycle: Lifecycle, private val tabs: Array<String>):
     FragmentStateAdapter(manager, lifecycle) {
     override fun createFragment(position: Int): Fragment {

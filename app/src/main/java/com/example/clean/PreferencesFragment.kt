@@ -1,14 +1,18 @@
 package com.example.clean
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_preferences.*
+import kotlinx.android.synthetic.main.fragment_register.*
 
+//This Fragment is for collecting user preference
 class PreferencesFragment : Fragment() {
 
     override fun onCreateView(
@@ -24,7 +28,16 @@ class PreferencesFragment : Fragment() {
 
         val articles = mutableSetOf<String>()
         val notifications = mutableSetOf<String>()
+        val words = mutableSetOf<String>()
 
+        //Get the current blacklist
+        val sharedPrefs: SharedPreferences = requireActivity().getSharedPreferences("blacklistPreferences", 0)
+        val tempwords = sharedPrefs.getStringSet("words", mutableSetOf()) as MutableSet<String>
+        for (word in tempwords) {
+            words.add(word)
+        }
+        txt_blacklist.text = words.toString()
+        //Create the drop-down with all the countries
         val spinner = lst_countries
         context?.let {
             ArrayAdapter.createFromResource(it, R.array.countries, android.R.layout.simple_spinner_item)
@@ -132,6 +145,7 @@ class PreferencesFragment : Fragment() {
             }
         }
 
+        //Saving all user preference
         btn_save_articles.setOnClickListener {
             val sharedPrefs: SharedPreferences = requireActivity().getSharedPreferences("articlePreferences", 0)
             val sharedPrefsEdit: SharedPreferences.Editor = sharedPrefs.edit()
@@ -145,6 +159,38 @@ class PreferencesFragment : Fragment() {
             sharedPrefsEdit.putStringSet("categories", notifications)
             sharedPrefsEdit.apply()
         }
+        btn_save_blacklist.setOnClickListener {
+            if(edt_blacklist.editText!!.text.toString().isNotEmpty()) {
+                words.add(edt_blacklist.editText!!.text.toString())
+            }
+            edt_blacklist.editText!!.text.clear()
+            val sharedPrefs: SharedPreferences = requireActivity().getSharedPreferences("blacklistPreferences", 0)
+            val sharedPrefsEdit: SharedPreferences.Editor = sharedPrefs.edit()
+            sharedPrefsEdit.putStringSet("words", words)
+            sharedPrefsEdit.apply()
+            txt_blacklist.text = words.toString()
+        }
+        btn_delete_blacklist.setOnClickListener {
+            if(words.isNotEmpty()) {
+                words.remove(words.last())
+                txt_blacklist.text = words.toString()
+                val sharedPrefs: SharedPreferences = requireActivity().getSharedPreferences("blacklistPreferences", 0)
+                val sharedPrefsEdit: SharedPreferences.Editor = sharedPrefs.edit()
+                sharedPrefsEdit.putStringSet("words", words)
+                sharedPrefsEdit.apply()
+            }
+        }
+        //Open up the notification channel system settings
+        btn_open_notifications.setOnClickListener {
+            goToSystemNotificationSettings(NotificationHelper.CHANNEL_ONE_ID)
+        }
+    }
+
+    private fun goToSystemNotificationSettings(channel: String) {
+        val i = Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS)
+        i.putExtra(Settings.EXTRA_APP_PACKAGE, "com.example.clean")
+        i.putExtra(Settings.EXTRA_CHANNEL_ID, channel)
+        startActivity(i)
     }
 
 }

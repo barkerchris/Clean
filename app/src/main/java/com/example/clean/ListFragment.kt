@@ -13,13 +13,18 @@ import com.dfl.newsapi.NewsApiRepository
 import com.dfl.newsapi.enums.Category
 import com.dfl.newsapi.enums.Country
 import com.dfl.newsapi.model.ArticleDto
-import com.example.clean.adapters.RecyclerAdapter
+import com.example.clean.adapters.ListRecyclerAdapter
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_list.*
 
+//Fragment holding the recycler view for viewing articles
 class ListFragment : Fragment() {
-    private val newsApiRepository = NewsApiRepository("5d5a36ccc90f4f7baaa94cdca8da3abc")
-    private var articleList: MutableList<ArticleDto> = mutableListOf()
+
+    //Can use this in other classes
+    companion object {
+        val newsApiRepository = NewsApiRepository("736bca77f5a64911805f4c07e052e98a")
+        var articleList: MutableList<ArticleDto> = mutableListOf()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,26 +37,25 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recycler = recycler_view
+        getArticles()
 
-//        getArticles()
-//        Thread.sleep(2000)
+        Thread.sleep(1000)
 
-        recycler.apply {
+        recycler_view.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = RecyclerAdapter(context, articleList, resources.getStringArray(R.array.tab_titles))
+            adapter
         }
 
         swipe_refresh.setOnRefreshListener {
             getArticles()
-            Thread.sleep(2000)
-            recycler.adapter!!.notifyDataSetChanged()
             swipe_refresh.isRefreshing = false
+            Thread.sleep(1000)
+            recycler_view.adapter!!.notifyDataSetChanged()
         }
     }
 
-    @SuppressLint("CheckResult")
-    fun getArticles() {
+    //Get all relevant info ready to actually pull the articles
+    private fun getArticles() {
         articleList.clear()
         //Get current tab
         val tabSharedPreferences: SharedPreferences = requireActivity().getSharedPreferences("currentTab", 0)
@@ -59,32 +63,29 @@ class ListFragment : Fragment() {
         //Setting article criteria
         var category: Category? = null
         var country: Country? = null
-        val pageSize = 4
+        var pageSize = 10
         val page = 1
         //My news
         if(tabIndex == 0) {
             //Get user preferences
             val sharedPrefs: SharedPreferences = requireActivity().getSharedPreferences("articlePreferences", 0)
-            var userCountry = sharedPrefs.getString("country", "")
+            val userCountry = sharedPrefs.getString("country", "")
             var userCategories = sharedPrefs.getStringSet("categories", mutableSetOf())
+            lateinit var uCountry: Country
             //If the user has no set preferences then set default values
             if(userCountry.isNullOrEmpty()) {
-                userCountry = resources.getStringArray(R.array.countries)[50]
+                uCountry = Country.valueOf(resources.getStringArray(R.array.countries)[50])
+            } else {
+                uCountry = Country.valueOf(userCountry)
             }
             if(userCategories.isNullOrEmpty()) {
                 userCategories = mutableSetOf(resources.getString(R.string.general))
             }
+            pageSize = 3
             for(cat in userCategories) {
-                    newsApiRepository.getTopHeadlines(category = Category.valueOf(cat.toString()),
-                        country = Country.valueOf(userCountry.toString()), pageSize = page, page = page)
-                        .subscribeOn(Schedulers.io())
-                        .toFlowable()
-                        .flatMapIterable { articles -> articles.articles }
-                        .subscribe({ article -> articleList.add(article) },
-                            { t -> Log.d("getTopHeadlines error", t.message!!) })
+                pullArticles(Category.valueOf(cat), uCountry, pageSize, page)
             }
             return
-
         } else if(tabIndex == 1) {
             category = Category.valueOf(resources.getString(R.string.general))
             country = null
@@ -110,13 +111,44 @@ class ListFragment : Fragment() {
             category = Category.valueOf(resources.getString(R.string.business))
             country = null
         }
+        pullArticles(category, country, pageSize, page)
+    }
 
+    //Pulls the articles
+    @SuppressLint("CheckResult")
+    fun pullArticles(category: Category?, country: Country?, pageSize: Int, page: Int) {
         newsApiRepository.getTopHeadlines(category = category, country = country, pageSize = pageSize, page = page)
             .subscribeOn(Schedulers.io())
             .toFlowable()
             .flatMapIterable { articles -> articles.articles }
-            .subscribe({ article -> articleList.add(article) },
+            .subscribe({ article -> filter(article) },
                 { t -> Log.d("getTopHeadlines error", t.message!!) })
+    }
+
+    //Filters out articles (stops duplicates + allows bonus blacklist feature)
+    private fun filter(article: ArticleDto) {
+        val sharedPrefs: SharedPreferences = requireActivity().getSharedPreferences("blacklistPreferences", 0)
+        val blacklist = sharedPrefs.getStringSet("words", mutableSetOf())
+        var add: Boolean = true
+        //Check to see if title contains blocked words
+        if(!blacklist.isNullOrEmpty()) {
+            for(word in blacklist) {
+                if(article.title.contains(word, ignoreCase = true)) {
+                    add = false
+                }
+            }
+            //Add to list
+            if(add && !articleList.contains(article)) {
+                articleList.add(article)
+                recycler_view.adapter = ListRecyclerAdapter(requireContext(), articleList, resources.getStringArray(R.array.tab_titles))
+            }
+            return
+        }
+        //This is here to stop duplicates in the case that the blacklist is empty
+        if(!articleList.contains(article)) {
+            articleList.add(article)
+            recycler_view.adapter = ListRecyclerAdapter(requireContext(), articleList, resources.getStringArray(R.array.tab_titles))
+        }
     }
 
 }
